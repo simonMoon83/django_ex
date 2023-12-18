@@ -1,0 +1,47 @@
+<!-- influx_app/templates/influx_app/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfluxDB Data</title>
+    <!-- Bootstrap 스타일 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy8k+U6tJ0UqO+Cy6aspWd5LG5t+EvKvo" crossorigin="anonymous">
+    <style>
+        /* 테이블에 테두리 추가 */
+        table {
+            border: 2px solid #dee2e6;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">InfluxDB Data</h1>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Time</th>
+                    <th scope="col">Measurement</th>
+                    <th scope="col">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in data_list %}
+                <tr>
+                    <td>{{ data.time|date:"Y-m-d H:i:s" }}</td>
+                    <td>{{ data.measurement }}</td>
+                    <td>{{ data.value }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Bootstrap JS 및 Popper.js를 사용하고 있습니다. 필요하다면 해당 부분을 원하는 스크립트로 변경하세요. -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-pzjw8hlBfCEi+/aR2m9BqUWUphzy3u9aHRgG8TQMsGDAe06ir0lWo4+oEAaBXSkz" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy8k+U6tJ0UqO+Cy6aspWd5LG5t+EvKvo" crossorigin="anonymous"></script>
+</body>
+</html>
